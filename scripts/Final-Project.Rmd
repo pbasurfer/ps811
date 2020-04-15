@@ -1,0 +1,17 @@
+---
+title: "Final Project"
+author: "Joshua Firestone"
+date: |
+  `r format(Sys.time(), '%B %d, %Y')`
+abstract: |
+  For this project I will double up on a project for my Supply Chain
+  Analytics course. We haven't settled on a topic yet, but it is 
+  supposed to be a group project where we find a dataset and perform
+  some of the analyses on it we've gone over in class: regression, 
+  classification, predictive models, etc. I plan to take the work we
+  do in that class and convert it for the use of the r-markdown paper
+  in PS811. 
+output: pdf_document
+geometry: margin = 1.15in              
+fontsize: 12pt 
+---
