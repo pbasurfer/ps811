@@ -4,13 +4,12 @@ author: "Joshua Firestone"
 date: |
   `r format(Sys.time(), '%B %d, %Y')`
 abstract: |
-  For this project I will double up on a project for my Supply Chain
-  Analytics course. We haven't settled on a topic yet, but it is 
-  supposed to be a group project where we find a dataset and perform
-  some of the analyses on it we've gone over in class: regression, 
-  classification, predictive models, etc. I plan to take the work we
-  do in that class and convert it for the use of the r-markdown paper
-  in PS811. 
+  For this project I am doubling up on a project for my Supply Chain
+  Analytics course. It uses Boston housing data which is a fairly common
+  dataset that is often used as a sample case. For the class project our
+  task was to utilize multiple models and methods that we have learned
+  this semester to analyze the data. My portion was regression trees and
+  random forests, so that will be all I include here. 
 output: 
   pdf_document:
     latex_engine: xelatex
