@@ -51,13 +51,14 @@ print(RMSE_tree)
 #Now random forest
 rf_boston <- randomForest(target ~ CRIM + ZN + INDUS + CHAS + NOX + RM +
                             AGE + DIS + RAD + TAX + PTRATIO + B + 
-                            LSTAT, data = training)
+                            LSTAT, data = training, ntree = 1000, importance = TRUE)
 
 rf_predict <- predict(rf_boston, test, type = "response")
 rf_rmse <- sqrt(mean((rf_predict - test$target)^2))
 print(rf_rmse)
 importance(rf_boston)
+varImpPlot(rf_boston, sort = TRUE)
 
 boston_imp <- as.data.frame(importance(rf_boston))
 boston_imp$variables <- row.names(boston_imp)
-boston_imp[order(boston_imp$IncNodePurity, decreasing = "TRUE"), ]
+boston_imp[order(boston_imp$"%IncMSE", decreasing = "TRUE"), ]
