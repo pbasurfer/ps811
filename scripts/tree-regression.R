@@ -46,4 +46,18 @@ RMSE_tree <- sqrt(mean((tree_pred - test$target)^2))
 print(RMSE_tree)
 #results in a tree with 4 (tree_prune) 
 #or 7 (pdtree) internal nodes
-#room size seems to be most important predictor  
+#room size seems to be most important predictor 
+
+#Now random forest
+rf_boston <- randomForest(target ~ CRIM + ZN + INDUS + CHAS + NOX + RM +
+                            AGE + DIS + RAD + TAX + PTRATIO + B + 
+                            LSTAT, data = training)
+
+rf_predict <- predict(rf_boston, test, type = "response")
+rf_rmse <- sqrt(mean((rf_predict - test$target)^2))
+print(rf_rmse)
+importance(rf_boston)
+
+boston_imp <- as.data.frame(importance(rf_boston))
+boston_imp$variables <- row.names(boston_imp)
+boston_imp[order(boston_imp$IncNodePurity, decreasing = "TRUE"), ]
