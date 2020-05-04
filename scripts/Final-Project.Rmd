@@ -29,4 +29,4 @@ library(here)
 
 Typing some sample text here. Now I want to insert a Tableau image. Let's see if it works! 
 
-![alt text goes here](/Users/pbasu/Desktop/PS811-Final-Project/images/tableau-test.png) 
+![alt text goes here](/Users/pbasu/Desktop/PS811-Final-Project/images/tableau-test-02.png) 
