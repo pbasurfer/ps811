@@ -62,3 +62,11 @@ varImpPlot(rf_boston, sort = TRUE)
 boston_imp <- as.data.frame(importance(rf_boston))
 boston_imp$variables <- row.names(boston_imp)
 boston_imp[order(boston_imp$"%IncMSE", decreasing = "TRUE"), ]
+#this shows us that LSTAT and RM are still our two most
+#important variables, which aligns with the tree
+
+#plot predictions vs actual
+plot(test$target, rf_predict, pch = 20, col = "purple")
+abline(lm(test$target ~ rf_predict, data = test))
+linear_model <- lm(test$target ~ rf_predict, data = test)
+summary(linear_model)
