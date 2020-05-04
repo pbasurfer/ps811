@@ -71,16 +71,3 @@ abline(lm(test$target ~ rf_predict, data = test))
 linear_model <- lm(test$target ~ rf_predict, data = test)
 summary(linear_model)
 
-#visualize Random Forest
-#install.packages("party")
-library(party)
-cf <- cforest(target ~ CRIM + ZN + INDUS + CHAS + NOX + RM +
-                AGE + DIS + RAD + TAX + PTRATIO + B + 
-                LSTAT, data = training, controls=cforest_control(mtry=2, mincriterion=0))
-pt <- prettytree(cf@ensemble[[1]], names(cf@data@get("input"))) 
-nt <- new("BinaryTree") 
-nt@tree <- pt 
-nt@data <- cf@data 
-nt@responses <- cf@responses 
-
-plot(nt, type="simple")
