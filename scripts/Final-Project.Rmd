@@ -22,18 +22,24 @@ output:
   bookdown::pdf_document2:
     keep_tex: true
     latex_engine: xelatex
-    mainfont: Arial
     number_sections: true
     toc: true
     fig_caption: true
     citation_package: biblatex
+    includes:
+      in_header:
+        - preamble.tex
   bookdown::html_document2: default
   bookdown::word_document2:
     toc: true
 ---
 
 ```{r set options, echo=FALSE, include=FALSE}
-knitr::opts_chunk$set(echo=FALSE, include=FALSE)
+knitr::opts_chunk$set(
+  echo=FALSE, include=FALSE,
+  fig.align = "center",
+  fig.width = 4, fig.height = 3, 
+  out.width = "80%")
 ```
 
 ```{r libraries, echo=FALSE}
