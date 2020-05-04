@@ -25,6 +25,11 @@ knitr::opts_chunk$set(echo=FALSE, include=FALSE)
 
 ```{r libraries, echo=FALSE}
 library(here)
+library(tidyverse)
+library(rpart)
+library(rpart.plot)
+library(randomForest)
+library(tree)
 ```
 
 Typing some sample text here. Now I want to insert a Tableau image. Let's see if it works! 
