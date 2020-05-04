@@ -37,8 +37,13 @@ prp(tree_prune, extra = 1, box.col = "olivedrab3")
 plot(boston$LSTAT, boston$RM, col = "olivedrab3", pch=20, xlab="LSTAT",ylab="RM")
 partition.tree(prune.tree(tree(target ~ RM + LSTAT, data = training), best = 5), ordvars=c("LSTAT","RM"), add=TRUE, cex = 1.15)
 
-tree_pred <- predict(tree_prune, newdata = test)
+#use minimum relative x-error as pruning criteria
+pdtree <- prune(boston_tree, cp=boston_tree$cptable[which.min(boston_tree$cptable[,"xerror"]),"CP"])
+prp(pdtree, extra = 1, box.col = "olivedrab3")
+
+tree_pred <- predict(pdtree, newdata = test)
 RMSE_tree <- sqrt(mean((tree_pred - test$target)^2))
 print(RMSE_tree)
 #results in a tree with 4 (tree_prune) 
-#room size seems to be most important predictor 
+#or 7 (pdtree) internal nodes
+#room size seems to be most important predictor  
