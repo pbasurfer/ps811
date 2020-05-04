@@ -6,10 +6,11 @@ date: |
 abstract: |
   For this project I am doubling up on a project for my Supply Chain
   Analytics course. It uses Boston housing data which is a fairly common
-  dataset that is often used as a sample case. For the class project our
-  task was to utilize multiple models and methods that we have learned
-  this semester to analyze the data. My portion was regression trees and
-  random forests, so that will be all I include here. 
+  dataset that is often used as a sample case [@housing]. For the class
+  project our task was to utilize multiple models and methods that we
+  have learned this semester to analyze the data. My portion was
+  regression trees and random forests, so that will be all I include
+  here. 
 geometry: margin = 1in              
 fontsize: 12pt 
 bibliography: bibliography.bib 
@@ -51,6 +52,14 @@ library(randomForest)
 library(tree)
 ```
 
-Typing some sample text here. Now I want to insert a Tableau image. Let's see if it works! 
+# Body
+Typing some sample text here. Now I want to insert a Tableau image. Let's see if it works! ![alt text goes here](/Users/pbasu/Desktop/PS811-Final-Project/images/tableau-test-02.png)
 
-![alt text goes here](/Users/pbasu/Desktop/PS811-Final-Project/images/tableau-test-02.png) 
+# Overview
+typity typity type type
+
+# Regression Trees
+typity typity type type
+
+# Random Forests
+typity typity type type
