@@ -10,12 +10,26 @@ abstract: |
   task was to utilize multiple models and methods that we have learned
   this semester to analyze the data. My portion was regression trees and
   random forests, so that will be all I include here. 
-output: 
-  pdf_document:
-    latex_engine: xelatex
-mainfont: Arial
 geometry: margin = 1in              
 fontsize: 12pt 
+bibliography: bibliography.bib 
+biblio-style: authoryear               
+urlcolor: blue                         
+citecolor: black                       
+linkcolor: magenta
+
+output: 
+  bookdown::pdf_document2:
+    keep_tex: true
+    latex_engine: xelatex
+mainfont: Arial
+    number_sections: true
+    toc: true
+    fig_caption: true
+    citation_package: biblatex
+  bookdown::html_document2: default
+  bookdown::word_document2:
+    toc: true
 ---
 
 ```{r set options, echo=FALSE, include=FALSE}
