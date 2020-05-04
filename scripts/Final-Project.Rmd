@@ -43,7 +43,7 @@ knitr::opts_chunk$set(
   out.width = "80%")
 ```
 
-```{r libraries, echo=FALSE}
+```{r libraries}
 library(here)
 library(tidyverse)
 library(rpart)
@@ -51,6 +51,12 @@ library(rpart.plot)
 library(randomForest)
 library(tree)
 ```
+
+```{r read in data}
+boston <- here("data", "Data_Boston.csv") %>% 
+  read_csv()
+```
+
 
 # Body
 Typing some sample text here. Now I want to insert a Tableau image. Let's see if it works! ![alt text goes here](/Users/pbasu/Desktop/PS811-Final-Project/images/tableau-test-02.png)
@@ -60,6 +66,24 @@ typity typity type type
 
 # Regression Trees
 typity typity type type
+```{r first tree, include=TRUE, echo=FALSE, results=TRUE}
+set.seed(1234)
+train_ind <- sample.int(n = nrow(boston), 
+                        size = floor(.75*nrow(boston)), 
+                        replace = FALSE)
+
+training <- boston[train_ind, ]
+test <- boston[-train_ind, ]
+
+boston_tree <- rpart(target ~ CRIM + ZN + INDUS + CHAS + NOX + RM +
+                       AGE + DIS + RAD + TAX + PTRATIO + B + 
+                       LSTAT, data = training, method = "anova")
+
+plotcp(boston_tree)
+tree_prune <- prune(boston_tree, cp = 0.035)
+prp(tree_prune, extra = 1, box.col = "olivedrab3")
+```
+
 
 # Random Forests
 typity typity type type
