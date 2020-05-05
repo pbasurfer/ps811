@@ -32,6 +32,10 @@ plotcp(boston_tree)
 tree_prune <- prune(boston_tree, cp = 0.035)
 ## @knitr firsttree
 prp(tree_prune, extra = 1, box.col = "olivedrab3")
+## @knitr stop
+prune_pred <- predict(tree_prune, newdata = test)
+RMSE_prune <- round(sqrt(mean((prune_pred - test$target)^2)), digits = 2)
+print(RMSE_prune)
 #create partition to visualize splits
 #it only works with 2 predictor variables
 #so it only applies to tree_prune, which isn't the best model
@@ -46,7 +50,7 @@ pdtree <- prune(boston_tree, cp=boston_tree$cptable[which.min(boston_tree$cptabl
 prp(pdtree, extra = 1, box.col = "olivedrab3")
 ## @knitr stop
 tree_pred <- predict(pdtree, newdata = test)
-RMSE_tree <- sqrt(mean((tree_pred - test$target)^2))
+RMSE_tree <- round(sqrt(mean((tree_pred - test$target)^2)), digits = 2)
 print(RMSE_tree)
 #results in a tree with 4 (tree_prune) 
 #or 7 (pdtree) internal nodes
@@ -58,7 +62,7 @@ rf_boston <- randomForest(target ~ CRIM + ZN + INDUS + CHAS + NOX + RM +
                             LSTAT, data = training, ntree = 1000, importance = TRUE)
 
 rf_predict <- predict(rf_boston, test, type = "response")
-rf_rmse <- sqrt(mean((rf_predict - test$target)^2))
+rf_rmse <- round(sqrt(mean((rf_predict - test$target)^2)), digits = 2)
 print(rf_rmse)
 importance(rf_boston)
 ## @knitr importanceplot
