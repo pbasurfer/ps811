@@ -66,7 +66,7 @@ typity typity type type
 
 # Regression Trees
 typity typity type type
-```{r first tree, include=TRUE, echo=FALSE, results=TRUE}
+```{r data setup}
 set.seed(1234)
 train_ind <- sample.int(n = nrow(boston), 
                         size = floor(.75*nrow(boston)), 
@@ -78,8 +78,14 @@ test <- boston[-train_ind, ]
 boston_tree <- rpart(target ~ CRIM + ZN + INDUS + CHAS + NOX + RM +
                        AGE + DIS + RAD + TAX + PTRATIO + B + 
                        LSTAT, data = training, method = "anova")
+```
 
+```{r cp table, include=TRUE, results=TRUE}
 plotcp(boston_tree)
+```
+typity typity type type
+
+```{r first tree, include=TRUE, results=TRUE}
 tree_prune <- prune(boston_tree, cp = 0.035)
 prp(tree_prune, extra = 1, box.col = "olivedrab3")
 ```
