@@ -62,7 +62,7 @@ rf_rmse <- sqrt(mean((rf_predict - test$target)^2))
 print(rf_rmse)
 importance(rf_boston)
 ## @knitr importanceplot
-varImpPlot(rf_boston, sort = TRUE)
+varImpPlot(rf_boston, sort = TRUE, main = NULL)
 ## @knitr stop
 boston_imp <- as.data.frame(importance(rf_boston))
 boston_imp$variables <- row.names(boston_imp)

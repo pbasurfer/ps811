@@ -57,7 +57,6 @@ source("tree-regression.R")
 knitr::read_chunk("tree-regression.R")
 ```
 
-
 # Body
 Typing some sample text here. Now I want to insert a Tableau image. Let's see if it works! ![alt text goes here](/Users/pbasu/Desktop/PS811-Final-Project/images/tableau-test-02.png)
 
@@ -75,7 +74,7 @@ typity typity type type
 <<firsttree>>
 ```
 typity typity type type
-```{r partition tree, include=TRUE, results=TRUE}
+```{r partition tree, include=TRUE, results=TRUE, fig.height=4.5, fig.width=5.5}
 <<partitiontree>>
 ```
 typity typity type type
@@ -86,6 +85,6 @@ typity typity type type
 
 # Random Forests
 typity typity type type
-```{r importance plot, include=TRUE, results=TRUE}
+```{r importance plot, include=TRUE, results=TRUE, fig.width=6, fig.height=4}
 <<importanceplot>>
 ```
