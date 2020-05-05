@@ -89,7 +89,42 @@ typity typity type type
 tree_prune <- prune(boston_tree, cp = 0.035)
 prp(tree_prune, extra = 1, box.col = "olivedrab3")
 ```
+typity typity type type
+```{r partition tree, include=TRUE, results=TRUE}
+plot(boston$LSTAT, boston$RM, col = "olivedrab3", pch=20, xlab="LSTAT",ylab="RM")
+partition.tree(prune.tree(tree(target ~ RM + LSTAT, data = training), best = 5), ordvars=c("LSTAT","RM"), add=TRUE, cex = 1.15)
+```
+typity typity type type
+```{r second tree, include=TRUE, results=TRUE}
+pdtree <- prune(boston_tree, cp=boston_tree$cptable[which.min(boston_tree$cptable[,"xerror"]),"CP"])
+prp(pdtree, extra = 1, box.col = "olivedrab3")
+```
+typity typity type type
+```{r evaluate tree performance}
+tree_pred <- predict(pdtree, newdata = test)
+RMSE_tree <- sqrt(mean((tree_pred - test$target)^2))
+print(RMSE_tree)
+```
 
 
 # Random Forests
 typity typity type type
+```{rset up and test RF}
+rf_boston <- randomForest(target ~ CRIM + ZN + INDUS + CHAS + NOX + RM +
+                            AGE + DIS + RAD + TAX + PTRATIO + B + 
+                            LSTAT, data = training, ntree = 1000, importance = TRUE)
+
+rf_predict <- predict(rf_boston, test, type = "response")
+rf_rmse <- sqrt(mean((rf_predict - test$target)^2))
+print(rf_rmse)
+importance(rf_boston)
+
+boston_imp <- as.data.frame(importance(rf_boston))
+boston_imp$variables <- row.names(boston_imp)
+boston_imp[order(boston_imp$"%IncMSE", decreasing = "TRUE"), ]
+```
+typity typity type type
+```{r importance plot, include=TRUE, results=TRUE}
+varImpPlot(rf_boston, sort = TRUE)
+```
+
